@@ -526,13 +526,10 @@ void cpufreq_unregister_governor(struct cpufreq_governor *governor);
  * Performance governor is fallback governor if any other gov failed to auto
  * load due latency restrictions
  */
-#ifdef CONFIG_CPU_FREQ_GOV_PERFORMANCE
-extern struct cpufreq_governor cpufreq_gov_performance;
-#endif
-#ifdef CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
-#define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_performance)
-#elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL)
+#ifdef CONFIG_CPU_FREQ_GOV_SCHEDUTIL
 extern struct cpufreq_governor cpufreq_gov_schedutil;
+#endif
+#ifdef CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
 #define CPUFREQ_DEFAULT_GOVERNOR	(&cpufreq_gov_schedutil)
 #elif defined(CONFIG_CPU_FREQ_DEFAULT_GOV_PWRUTILX)
 extern struct cpufreq_governor cpufreq_gov_pwrutilx;
